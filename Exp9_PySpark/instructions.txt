@@ -1,0 +1,34 @@
+Exp9_PySpark - Big Data Analytics Experiment 9 (Apache Spark / PySpark)
+
+Aim:
+Use Apache Spark and implement WordCount using PySpark.
+
+Project path:
+cd /mnt/c/Users/vinay/OneDrive/Desktop/ubuntu/hadoop/Exp9_PySpark
+
+1) Run full experiment (installs PySpark if missing)
+chmod +x run_all.sh
+./run_all.sh
+
+2) See output proof
+cat verification/pyspark_version.txt
+cat verification/wordcount_output.txt
+
+3) Run manually
+python3 -m venv .venv
+./.venv/bin/python -m pip install --upgrade pip
+./.venv/bin/python -m pip install -r requirements.txt
+
+./.venv/bin/python src/wordcount.py data/input.txt verification/wordcount_output.txt
+
+4) Input and output details
+- Input file: data/input.txt
+- Output file: verification/wordcount_output.txt
+- Output format: word<TAB>count (sorted by count descending, then word)
+
+5) If a new PySpark query/task is asked
+1. Add a new script in src/ (example: src/top_words.py).
+2. Keep sample input in data/.
+3. Run with ./.venv/bin/python <script> <args>.
+4. Save proof in verification/.
+5. Update this instructions file with the new command.

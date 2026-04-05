@@ -1,0 +1,5 @@
+Apache Spark is a fast engine for large-scale data processing.
+Spark can run programs quickly using in-memory computation.
+This experiment demonstrates WordCount using PySpark.
+PySpark makes distributed data processing easy to start in local mode.
+WordCount counts repeated words and shows their frequencies.

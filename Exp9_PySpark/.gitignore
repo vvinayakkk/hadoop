@@ -1,0 +1,20 @@
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Virtual envs
+.venv/
+venv/
+
+# Spark/Hive local runtime artifacts
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Run-time generated folders/files
+logs/
+tmp/
+*.log
+
+# Keep verification proof files; ignore accidental temp artifacts there
+verification/*.tmp
