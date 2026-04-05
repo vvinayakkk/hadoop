@@ -1,0 +1,4 @@
+Average	255
+Excellent	198
+Good	517
+Poor	30

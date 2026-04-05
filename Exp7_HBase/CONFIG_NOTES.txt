@@ -1,0 +1,31 @@
+Exp7 HBase Config Notes (WSL/Linux standalone)
+
+In WSL, a simple standalone config in hbase-site.xml usually includes:
+
+<configuration>
+  <property>
+    <name>hbase.cluster.distributed</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>hbase.tmp.dir</name>
+    <value>/home/vinayak/hbase/tmp</value>
+  </property>
+  <property>
+    <name>hbase.rootdir</name>
+    <value>file:///home/vinayak/hbase_data_exp7</value>
+  </property>
+  <property>
+    <name>hbase.zookeeper.property.dataDir</name>
+    <value>/home/vinayak/zookeeper_exp7</value>
+  </property>
+  <property>
+    <name>hbase.zookeeper.quorum</name>
+    <value>localhost</value>
+  </property>
+</configuration>
+
+The Exp7 run script temporarily applies this config and restores your original
+hbase-site.xml automatically after completion.
+
+Windows paths shown in classroom PDFs should be adapted to Linux paths for WSL.

@@ -1,0 +1,2 @@
+female	avg_math=63.633, avg_reading=72.608, avg_writing=72.467, students=518
+male	avg_math=68.728, avg_reading=65.473, avg_writing=63.311, students=482

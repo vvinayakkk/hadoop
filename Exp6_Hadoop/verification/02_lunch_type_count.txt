@@ -1,0 +1,2 @@
+free/reduced	355
+standard	645

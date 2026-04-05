@@ -1,0 +1,33 @@
+Dataset: StudentsPerformance.csv (Kaggle: spscientist/students-performance-in-exams)
+Rows: 1000 student records
+Columns:
+1) gender: student gender category (female/male)
+2) race/ethnicity: group label (A, B, C, D, E)
+3) parental level of education: parent education background
+4) lunch: lunch type (standard, free/reduced)
+5) test preparation course: completed or none
+6) math score: integer score out of 100
+7) reading score: integer score out of 100
+8) writing score: integer score out of 100
+
+Exp6 Analysis Query Set
+Simple queries:
+- GenderCount: count students by gender.
+- LunchTypeCount: count students by lunch type.
+- HighestMathByRace: max math score per race/ethnicity group.
+
+Intermediate queries:
+- AvgScoresByGender: average math, reading, writing by gender.
+- AvgTotalByParentalEducation: average total score (math+reading+writing) by parental education.
+- TestPrepImpact: average total score by test prep completion status.
+
+Complex queries:
+- PerformanceBandDistribution: classify each student into performance bands using average score (Excellent/Good/Average/Poor).
+- TopNStudentsByTotalScore: global Top-5 student records by total score using descending sort in reducer.
+- ScoreGapBucketCount: bucketized distribution of reading-math gap to analyze comparative subject strength.
+- DistinctScoreTriplesCount: count distinct (math,reading,writing) combinations across all students.
+
+Output Artifacts
+- output/: raw job outputs
+- verification/: extracted part-r-00000 results for each query
+- output_ss/: PNG snapshots generated from verification files

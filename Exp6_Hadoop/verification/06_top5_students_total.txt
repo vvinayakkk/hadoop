@@ -1,0 +1,5 @@
+rank_1 total=300	gender=female, race=group E, parent_education=associate's degree, lunch=standard, prep=none, scores=100/100/100
+rank_2 total=300	gender=male, race=group E, parent_education=bachelor's degree, lunch=standard, prep=completed, scores=100/100/100
+rank_3 total=300	gender=female, race=group E, parent_education=bachelor's degree, lunch=standard, prep=none, scores=100/100/100
+rank_4 total=299	gender=female, race=group E, parent_education=bachelor's degree, lunch=standard, prep=completed, scores=99/100/100
+rank_5 total=297	gender=female, race=group D, parent_education=some high school, lunch=standard, prep=completed, scores=97/100/100

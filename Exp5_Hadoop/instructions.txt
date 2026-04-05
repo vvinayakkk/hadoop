@@ -1,0 +1,57 @@
+Hadoop MapReduce Experiment (WSL) - Rerun Instructions
+Date prepared: 2026-04-05
+
+Dataset used (Kaggle): spscientist/students-performance-in-exams
+File: data/StudentsPerformance.csv
+Text column used: parental level of education (column 3)
+Integer column used: math score (column 6)
+
+1) Open terminal and move to project
+cd /mnt/c/Users/vinay/OneDrive/Desktop/ubuntu/Exp5_Hadoop
+
+2) Load shell config and verify Hadoop
+source ~/.bashrc
+/home/vinayak/hadoop/bin/hadoop version
+
+3) (Only if dataset is missing) download from Kaggle
+mkdir -p data
+cd data
+kaggle datasets download -d spscientist/students-performance-in-exams --unzip
+cd ..
+
+4) Clean previous build and output folders (important for no clash)
+rm -rf classes/* output/* hadoop_experiment.jar
+mkdir -p classes output
+
+5) Compile all Java programs
+javac -classpath "$(/home/vinayak/hadoop/bin/hadoop classpath --glob)" -d classes src/*.java
+
+6) Create jar
+jar -cvf hadoop_experiment.jar -C classes/ .
+
+7) Run each job (separate output folder per subpart)
+/home/vinayak/hadoop/bin/hadoop jar hadoop_experiment.jar WordFrequency data/StudentsPerformance.csv output/word_frequency
+/home/vinayak/hadoop/bin/hadoop jar hadoop_experiment.jar HighestFrequencyWord data/StudentsPerformance.csv output/highest_word
+/home/vinayak/hadoop/bin/hadoop jar hadoop_experiment.jar LargestInteger data/StudentsPerformance.csv output/largest_integer
+/home/vinayak/hadoop/bin/hadoop jar hadoop_experiment.jar AverageInteger data/StudentsPerformance.csv output/average_integer
+/home/vinayak/hadoop/bin/hadoop jar hadoop_experiment.jar DistinctIntegerCount data/StudentsPerformance.csv output/distinct_integer_count
+/home/vinayak/hadoop/bin/hadoop jar hadoop_experiment.jar OddEvenSet data/StudentsPerformance.csv output/odd_even_set
+
+8) Verify outputs
+sort -k2,2nr output/word_frequency/part-r-00000 | head -n 10
+cat output/highest_word/part-r-00000
+cat output/largest_integer/part-r-00000
+cat output/average_integer/part-r-00000
+cat output/distinct_integer_count/part-r-00000
+cat output/odd_even_set/part-r-00000
+
+9) Cleanup outputs after demonstration (important)
+rm -rf output/word_frequency \
+       output/highest_word \
+       output/largest_integer \
+       output/average_integer \
+       output/distinct_integer_count \
+       output/odd_even_set
+
+Optional one-command full run:
+./run_all.sh

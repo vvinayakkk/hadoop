@@ -1,0 +1,33 @@
+whoami
+
+# Cleanup from previous runs (safe)
+if exists 'emp'
+  disable 'emp'
+  drop 'emp'
+end
+
+# CREATE
+create 'emp', 'empname'
+list
+
+# INSERT
+put 'emp', 'r1', 'empname:name', 'animesh'
+scan 'emp'
+
+# READ
+get 'emp', 'r1'
+
+# UPDATE
+put 'emp', 'r1', 'empname:name', 'nimesh'
+scan 'emp'
+
+# DELETE
+deleteall 'emp', 'r1'
+scan 'emp'
+
+# OPTIONAL CLEANUP
+disable 'emp'
+drop 'emp'
+list
+
+exit

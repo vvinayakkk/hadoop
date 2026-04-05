@@ -1,0 +1,5 @@
+Balanced(-4..4)	336
+MathHigher(5..19)	206
+MathMuchHigher(>=20)	4
+ReadingHigher(5..19)	428
+ReadingMuchHigher(>=20)	26

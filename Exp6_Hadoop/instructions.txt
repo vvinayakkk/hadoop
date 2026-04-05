@@ -1,0 +1,133 @@
+Exp6_Hadoop - Data Analysis Using MapReduce (WSL)
+
+Completion requirements context:
+- Opened: Monday, 10 February 2025, 12:00 AM
+- Due: Monday, 17 February 2025, 12:00 AM
+- Dataset: Kaggle real-world dataset (same as Exp5)
+
+Project path:
+cd /mnt/c/Users/vinay/OneDrive/Desktop/ubuntu/Exp6_Hadoop
+
+1) Verify Hadoop in terminal
+source ~/.bashrc
+/home/vinayak/hadoop/bin/hadoop version
+
+2) (If data file missing) download dataset
+mkdir -p data
+cd data
+kaggle datasets download -d spscientist/students-performance-in-exams --unzip
+cd ..
+
+3) Clean and build
+rm -rf classes/* output/* verification/* exp6_hadoop.jar
+mkdir -p classes output verification
+javac -classpath "$(/home/vinayak/hadoop/bin/hadoop classpath --glob)" -d classes src/*.java
+jar -cvf exp6_hadoop.jar -C classes/ .
+
+4) Run all queries (simple + complex)
+./run_all.sh
+
+5) Run only individual query (if you do not want all)
+Use this pattern:
+/home/vinayak/hadoop/bin/hadoop jar exp6_hadoop.jar <ClassName> data/StudentsPerformance.csv output/<custom_output_folder>
+
+Important before running same query again:
+rm -rf output/<custom_output_folder>
+
+Individual query commands:
+/home/vinayak/hadoop/bin/hadoop jar exp6_hadoop.jar GenderCount data/StudentsPerformance.csv output/gender_count
+/home/vinayak/hadoop/bin/hadoop jar exp6_hadoop.jar LunchTypeCount data/StudentsPerformance.csv output/lunch_type_count
+/home/vinayak/hadoop/bin/hadoop jar exp6_hadoop.jar AvgScoresByGender data/StudentsPerformance.csv output/avg_scores_by_gender
+/home/vinayak/hadoop/bin/hadoop jar exp6_hadoop.jar AvgTotalByParentalEducation data/StudentsPerformance.csv output/avg_total_by_parent_edu
+/home/vinayak/hadoop/bin/hadoop jar exp6_hadoop.jar PerformanceBandDistribution data/StudentsPerformance.csv output/performance_bands
+/home/vinayak/hadoop/bin/hadoop jar exp6_hadoop.jar TopNStudentsByTotalScore data/StudentsPerformance.csv output/top5_students_total
+/home/vinayak/hadoop/bin/hadoop jar exp6_hadoop.jar TestPrepImpact data/StudentsPerformance.csv output/test_prep_impact
+/home/vinayak/hadoop/bin/hadoop jar exp6_hadoop.jar HighestMathByRace data/StudentsPerformance.csv output/highest_math_by_race
+/home/vinayak/hadoop/bin/hadoop jar exp6_hadoop.jar ScoreGapBucketCount data/StudentsPerformance.csv output/score_gap_buckets
+/home/vinayak/hadoop/bin/hadoop jar exp6_hadoop.jar DistinctScoreTriplesCount data/StudentsPerformance.csv output/distinct_score_triples
+
+6) How to see output
+For any query:
+cat output/<custom_output_folder>/part-r-00000
+
+Examples:
+cat output/gender_count/part-r-00000
+cat output/top5_students_total/part-r-00000
+
+Optional pretty views:
+sort -k2,2nr output/performance_bands/part-r-00000
+head -n 20 output/top5_students_total/part-r-00000
+
+7) Save manual verification text (optional)
+cat output/gender_count/part-r-00000 > verification/01_gender_count.txt
+
+Exp6 query list and what each does:
+1. GenderCount
+- Simple count of students by gender.
+
+2. LunchTypeCount
+- Simple count of students by lunch type.
+
+3. AvgScoresByGender
+- Average math, reading, and writing grouped by gender.
+
+4. AvgTotalByParentalEducation
+- Average total score (math+reading+writing) grouped by parental education.
+
+5. PerformanceBandDistribution
+- Bands each student by average score:
+  Excellent >= 80, Good >= 60, Average >= 40, else Poor.
+
+6. TopNStudentsByTotalScore
+- Complex top-5 extraction using descending key sort in MapReduce.
+
+7. TestPrepImpact
+- Compares average total score for completed vs none test-prep course.
+
+8. HighestMathByRace
+- Finds maximum math score inside each race/ethnicity group.
+
+9. ScoreGapBucketCount
+- Complex bucket analysis of reading-math gap:
+  ReadingMuchHigher, ReadingHigher, Balanced, MathHigher, MathMuchHigher.
+
+10. DistinctScoreTriplesCount
+- Complex uniqueness query for distinct (math, reading, writing) score combinations.
+
+8) If a new query is asked in exam/viva (proper workflow)
+1. Create new Java file in src/, for example src/NewQuery.java.
+2. Follow same structure:
+  - Mapper parses CSV using CsvUtils.parseCsv(...)
+  - Skip header using CsvUtils.isHeader(...)
+  - Emit key/value as needed
+  - Reducer computes final metric
+  - In main(), set local mode:
+    conf.set("mapreduce.framework.name", "local");
+    conf.set("fs.defaultFS", "file:///");
+3. Recompile all:
+  javac -classpath "$(/home/vinayak/hadoop/bin/hadoop classpath --glob)" -d classes src/*.java
+4. Recreate jar:
+  jar -cvf exp6_hadoop.jar -C classes/ .
+5. Run new class:
+  rm -rf output/new_query_output
+  /home/vinayak/hadoop/bin/hadoop jar exp6_hadoop.jar NewQuery data/StudentsPerformance.csv output/new_query_output
+6. View result:
+  cat output/new_query_output/part-r-00000
+7. (Optional) Save proof:
+  cat output/new_query_output/part-r-00000 > verification/new_query_output.txt
+
+Where outputs are saved:
+- verification/: text outputs for every query
+- output/: raw Hadoop output directories (cleaned by run_all.sh at end to prevent rerun clashes)
+
+Manual rerun safety cleanup (if needed):
+rm -rf output/gender_count \
+       output/lunch_type_count \
+       output/avg_scores_by_gender \
+       output/avg_total_by_parent_edu \
+       output/performance_bands \
+       output/top5_students_total \
+       output/test_prep_impact \
+       output/highest_math_by_race \
+       output/score_gap_buckets \
+       output/distinct_score_triples

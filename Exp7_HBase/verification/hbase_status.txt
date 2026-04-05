@@ -1,0 +1,16 @@
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.hbase.unsafe.HBasePlatformDependent (file:/home/vinayak/hbase/lib/hbase-unsafe-4.1.4.jar) to method java.nio.Bits.unaligned()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.hbase.unsafe.HBasePlatformDependent
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+2026-04-05 18:05:26,688 WARN  [main] util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+hbase:001:0> status 'simple'
+active master:  Vinayak:16000 1775412315381
+0 backup masters
+1 live servers
+    Vinayak.:16020 1775412320687
+        requestsPerSecond=0.0, numberOfOnlineRegions=0, usedHeapMB=0, maxHeapMB=0, numberOfStores=0, numberOfStorefiles=0, storefileUncompressedSizeMB=0, storefileSizeMB=0, memstoreSizeMB=0, storefileIndexSizeKB=0, readRequestsCount=0, filteredReadRequestsCount=0, writeRequestsCount=0, rootIndexSizeKB=0, totalStaticIndexSizeKB=0, totalStaticBloomSizeKB=0, totalCompactingKVs=0, currentCompactedKVs=0, compactionProgressPct=NaN, coprocessors=[]
+0 dead servers
+Aggregate load: 0, regions: 0
+Took 0.7316 seconds
+hbase:002:0> 

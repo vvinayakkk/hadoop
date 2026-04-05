@@ -1,0 +1,58 @@
+Exp7_HBase - Apache HBase CRUD (Standalone)
+
+Aim:
+Use Apache HBase and implement CRUD operations.
+
+Project path:
+cd /mnt/c/Users/vinay/OneDrive/Desktop/ubuntu/hadoop/Exp7_HBase
+
+1) Verify HBase installation
+source ~/.bashrc
+/home/vinayak/hbase/bin/hbase version
+
+2) Run full experiment (start, CRUD, stop)
+chmod +x run_all.sh
+./run_all.sh
+
+3) See output proof
+cat verification/hbase_version.txt
+cat verification/hbase_status.txt
+cat verification/hbase_crud_output.txt
+
+4) Run only individual commands manually (if needed)
+start-hbase.sh
+hbase shell
+
+Inside HBase shell (manual CRUD):
+create 'emp', 'empname'
+put 'emp', 'r1', 'empname:name', 'animesh'
+scan 'emp'
+get 'emp', 'r1'
+put 'emp', 'r1', 'empname:name', 'nimesh'
+scan 'emp'
+deleteall 'emp', 'r1'
+scan 'emp'
+disable 'emp'
+drop 'emp'
+exit
+
+Then stop service:
+stop-hbase.sh
+
+5) Rerun-safe cleanup
+If table already exists, cleanup first:
+hbase shell -n <<'EOF'
+if exists 'emp'
+disable 'emp'
+drop 'emp'
+end
+exit
+EOF
+
+6) If a new HBase query is asked
+1. Start HBase: start-hbase.sh
+2. Enter shell: hbase shell
+3. Run command and validate with scan/get/list/describe as relevant.
+4. Save proof by redirecting shell script output:
+   hbase shell -n your_commands.hbase > verification/new_query_output.txt
+5. Stop HBase: stop-hbase.sh

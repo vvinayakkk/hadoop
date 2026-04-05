@@ -1,0 +1,6 @@
+associate's degree	208.7072072072072
+bachelor's degree	215.77118644067798
+high school	189.2908163265306
+master's degree	220.79661016949152
+some college	205.42920353982302
+some high school	195.3240223463687
