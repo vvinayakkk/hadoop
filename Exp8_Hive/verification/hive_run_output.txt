@@ -1,0 +1,62 @@
+WARNING: log4j.properties is not found. HADOOP_CONF_DIR may be incomplete.
+WARNING: log4j.properties is not found. HADOOP_CONF_DIR may be incomplete.
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/vinayak/hive/lib/log4j-slf4j-impl-2.17.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/vinayak/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Hive Session ID = ed3854b0-8e3c-467b-a5dd-2bfbf7340464
+
+Logging initialized using configuration in jar:file:/home/vinayak/hive/lib/hive-common-3.1.3.jar!/hive-log4j2.properties Async: true
+Hive Session ID = 61b14a17-9ed8-4f50-ad09-fc4dda016b06
+OK
+Time taken: 2.566 seconds
+OK
+Time taken: 0.214 seconds
+OK
+Time taken: 0.36 seconds
+OK
+Time taken: 0.142 seconds
+OK
+Time taken: 3.176 seconds
+OK
+Time taken: 0.251 seconds
+Loading data to table exp8_hive.employee
+OK
+Time taken: 2.448 seconds
+Loading data to table exp8_hive.movies
+OK
+Time taken: 1.259 seconds
+OK
+employee
+movies
+Time taken: 0.389 seconds, Fetched: 2 row(s)
+OK
+Satyajit Ray	Pather Panchali
+Vijay Acharya	Dhoom 3
+Sanjay Bansali	Bajirao Mastani
+Amar Kaushik	Stree
+Anurag Kashyap	Gangs of Wasseypur
+Time taken: 8.904 seconds, Fetched: 5 row(s)
+OK
+1	Satyajit Ray	Pather Panchali
+2	Vijay Acharya	Dhoom 3
+3	Sanjay Bansali	Bajirao Mastani
+4	Amar Kaushik	Stree
+5	Anurag Kashyap	Gangs of Wasseypur
+Time taken: 0.238 seconds, Fetched: 5 row(s)
+OK
+Satyajit Ray	Pather Panchali
+Sanjay Bansali	Bajirao Mastani
+Anurag Kashyap	Gangs of Wasseypur
+Time taken: 2.223 seconds, Fetched: 3 row(s)
+OK
+3	Sanjay Bansali	Bajirao Mastani
+4	Amar Kaushik	Stree
+5	Anurag Kashyap	Gangs of Wasseypur
+Time taken: 0.593 seconds, Fetched: 3 row(s)
+OK
+Time taken: 2.148 seconds
+OK
+movies
+Time taken: 0.186 seconds, Fetched: 1 row(s)

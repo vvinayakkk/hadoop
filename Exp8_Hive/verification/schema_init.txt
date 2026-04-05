@@ -1,0 +1,238 @@
+WARNING: log4j.properties is not found. HADOOP_CONF_DIR may be incomplete.
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/vinayak/hive/lib/log4j-slf4j-impl-2.17.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/vinayak/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Metastore connection URL:	 jdbc:derby:;databaseName=/mnt/c/Users/vinay/OneDrive/Desktop/ubuntu/hadoop/Exp8_Hive/metastore_db;create=true
+Metastore Connection Driver :	 org.apache.derby.jdbc.EmbeddedDriver
+Metastore connection User:	 APP
+Starting metastore schema initialization to 3.1.0
+Initialization script hive-schema-3.1.0.derby.sql
+
+  
+   
+   
+   
+ 
+    
+ 
+  
+ 
+
+ 
+   
+   
+ 
+  
+  
+   
+   
+ 
+   
+ 
+  
+  
+ 
+     
+  
+    
+   
+ 
+       
+ 
+ 
+  
+   
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+        
+ 
+  
+ 
+   
+ 
+     
+ 
+  
+  
+  
+ 
+  
+   
+ 
+ 
+
+  
+   
+ 
+  
+  
+ 
+ 
+  
+
+  
+
+ 
+ 
+  
+
+  
+ 
+ 
+
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+  
+ 
+  
+  
+  
+ 
+ 
+ 
+  
+ 
+  
+ 
+ 
+ 
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+  
+  
+ 
+  
+  
+  
+  
+  
+  
+  
+ 
+  
+
+ 
+ 
+ 
+
+  
+  
+ 
+  
+  
+  
+ 
+  
+  
+  
+  
+ 
+ 
+ 
+   
+  
+
+   
+ 
+
+
+      
+
+
+
+     
+
+
+     
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+
+  
+    
+     
+ 
+  
+ 
+
+ 
+
+
+Initialization script completed
+schemaTool completed

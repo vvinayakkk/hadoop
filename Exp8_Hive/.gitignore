@@ -1,0 +1,14 @@
+# Runtime-generated Hive artifacts (do not commit)
+metastore_db/
+warehouse/
+scratch/
+logs/
+hadoop_conf/
+conf/hive-site.xml
+
+derby.log
+*.lck
+
+# Safety: keep verification outputs, ignore accidental temp files
+*.tmp
+*.swp

@@ -1,0 +1,46 @@
+Exp8_Hive - Big Data Analytics Experiment 8 (Apache Hive)
+
+Aim:
+Install and configure Apache Hive and implement HiveQL queries.
+
+Project path:
+cd /mnt/c/Users/vinay/OneDrive/Desktop/ubuntu/hadoop/Exp8_Hive
+
+1) Run full experiment (install if missing, execute queries, save proof)
+chmod +x run_all.sh
+./run_all.sh
+
+2) See output proof
+cat verification/hive_version.txt
+cat verification/hive_run_output.txt
+
+3) Run only manually (without automation)
+source ~/.bashrc
+export HIVE_HOME=/home/vinayak/hive
+export HADOOP_HOME=/home/vinayak/hadoop
+export PATH=$HIVE_HOME/bin:$HADOOP_HOME/bin:$PATH
+export HIVE_CONF_DIR=/mnt/c/Users/vinay/OneDrive/Desktop/ubuntu/hadoop/Exp8_Hive/conf
+
+hive --hiveconf PROJECT_DIR=/mnt/c/Users/vinay/OneDrive/Desktop/ubuntu/hadoop/Exp8_Hive -f exp8_queries.hql
+
+4) Main queries included
+- CREATE DATABASE / USE database
+- CREATE TABLE employee
+- CREATE TABLE movies
+- LOAD DATA LOCAL INPATH into both tables
+- SHOW TABLES
+- SELECT * from both tables
+- Filter query on movies (film LIKE '%a%')
+- Filter query on employee (id >= 3)
+- DROP TABLE employee and verify with SHOW TABLES
+
+5) If a new Hive query is asked
+1. Add query to exp8_queries.hql.
+2. Re-run: ./run_all.sh
+3. Check verification/hive_run_output.txt.
+4. Optionally split into a new .hql file and run:
+   hive --hiveconf PROJECT_DIR=/mnt/c/Users/vinay/OneDrive/Desktop/ubuntu/hadoop/Exp8_Hive -f your_query_file.hql
+
+Note:
+This setup uses local Derby metastore for reliable single-machine execution in WSL.
+If you need MySQL metastore, update conf/hive-site.xml with MySQL JDBC settings.
