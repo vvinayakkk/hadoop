@@ -1,0 +1,8 @@
+============================================================
+ Exp10 — Working with Distributed Messaging using Apache Kafka
+ Wed Apr 22 04:46:37 UTC 2026
+============================================================
+[Preflight] Docker OK
+
+=== Step 1 & 2: Starting ZooKeeper and Kafka ===
+no configuration file provided: not found

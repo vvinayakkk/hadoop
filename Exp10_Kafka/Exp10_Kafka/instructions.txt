@@ -1,0 +1,113 @@
+Exp10_Kafka - Big Data Analytics Experiment 10 (Apache Kafka)
+
+Aim:
+Understand how Kafka producers and consumers communicate using topics
+in a distributed environment. Demonstrate consumer groups and real-time
+message streaming.
+
+Project path:
+If you are starting from Windows CMD/PowerShell, enter Ubuntu first:
+wsl
+
+Then run Linux commands below.
+
+cd /mnt/c/Users/vinay/OneDrive/Desktop/ubuntu/hadoop/Exp10_Kafka
+
+=============================================================
+QUICK START (automated — runs all 8 steps)
+=============================================================
+1) Make script executable and run:
+   chmod +x run_all.sh
+   ./run_all.sh
+
+2) See output proof:
+   cat verification/kafka_version.txt
+   cat verification/producer_output.txt
+   cat verification/consumer_output.txt
+   cat verification/consumer_group_output.txt
+
+=============================================================
+MANUAL STEPS (follow the experiment PDF)
+=============================================================
+
+PREREQUISITE — Python venv:
+   python3 -m venv .venv
+   ./.venv/bin/python -m pip install -r requirements.txt
+
+Step 1 — Start ZooKeeper:
+   docker compose up -d
+   # ZooKeeper starts automatically via docker-compose.yml
+
+Step 2 — Start Kafka Broker:
+   # Kafka also starts via docker-compose.yml on port 9092
+   docker compose ps         # verify both containers are running
+
+Step 3 — Create a Topic:
+   docker exec exp10_kafka kafka-topics \
+     --bootstrap-server localhost:9092 \
+     --create --topic test-topic \
+     --partitions 1 --replication-factor 1
+
+   # Verify creation
+   docker exec exp10_kafka kafka-topics \
+     --bootstrap-server localhost:9092 --list
+
+Step 4 — Start Producer (Python):
+   ./.venv/bin/python src/producer.py localhost:9092 test-topic data/messages.txt
+
+Step 5 — Start Consumer (Python):
+   ./.venv/bin/python src/consumer.py \
+     localhost:9092 test-topic verification/consumer_output.txt 15
+
+Step 6 — Test Real-Time Messaging:
+   # Open two terminals. In terminal A run the consumer (with --from-beginning):
+   docker exec -it exp10_kafka kafka-console-consumer \
+     --bootstrap-server localhost:9092 \
+     --topic test-topic --from-beginning
+
+   # In terminal B run the console producer and type messages:
+   docker exec -it exp10_kafka kafka-console-producer \
+     --bootstrap-server localhost:9092 --topic test-topic
+
+Step 7 — Explore Consumer Groups:
+   ./.venv/bin/python src/consumer_group.py \
+     localhost:9092 group-topic verification/consumer_group_output.txt
+
+   # Observe in the output:
+   #   - Each message goes to only ONE consumer in the group
+   #   - A solo consumer (different group ID) gets ALL messages
+
+Step 8 — Stop Services:
+   docker compose down
+
+=============================================================
+FILE STRUCTURE
+=============================================================
+Exp10_Kafka/
+├── docker-compose.yml          ZooKeeper + Kafka (Confluent 7.5)
+├── requirements.txt            kafka-python==2.0.2
+├── instructions.txt            this file
+├── run_all.sh                  automated runner
+├── setup_exp10.py              file generator (recreates this folder)
+├── data/
+│   └── messages.txt            15 sample messages for producer
+├── src/
+│   ├── producer.py             publish messages to a topic
+│   ├── consumer.py             read messages from a topic
+│   ├── consumer_group.py       two-consumer group demo
+│   └── run_demo.py             orchestrator used by run_all.sh
+├── logs/                       run logs (timestamped)
+└── verification/               proof outputs
+    ├── kafka_version.txt
+    ├── kafka_broker_version.txt
+    ├── producer_output.txt
+    ├── consumer_output.txt
+    └── consumer_group_output.txt
+
+=============================================================
+TIPS
+=============================================================
+- Docker Desktop must be running before ./run_all.sh
+- First run downloads ~600 MB of Confluent images; subsequent runs are instant
+- If a port conflict on 9092/2181 occurs, stop any local Kafka first
+- To add a new Kafka task: add a script in src/, run it, save output to verification/
