@@ -1,7 +1,7 @@
 hbase:001:0> whoami
 vinayak (auth:SIMPLE)
     groups: vinayak, sudo, users, docker
-Took 0.0642 seconds
+Took 0.0461 seconds
 hbase:002:0> 
 hbase:003:0> # Cleanup from previous runs (safe)
 hbase:004:0> if exists 'emp'
@@ -9,62 +9,62 @@ hbase:004:0> if exists 'emp'
   drop 'emp'
 end
 Table emp does not exist
-Took 0.5714 seconds
+Took 0.7820 seconds
 hbase:008:0> 
 hbase:009:0> # CREATE
 hbase:010:0> create 'emp', 'empname'
 Created table emp
-Took 0.8058 seconds
+Took 0.8260 seconds
 => Hbase::Table - emp
 hbase:011:0> list
 TABLE
 emp
 1 row(s)
-Took 0.0432 seconds
+Took 0.0382 seconds
 => ["emp"]
 hbase:012:0> 
 hbase:013:0> # INSERT
 hbase:014:0> put 'emp', 'r1', 'empname:name', 'animesh'
-Took 0.1588 seconds
+Took 0.2144 seconds
 hbase:015:0> scan 'emp'
 ROW  COLUMN+CELL
- r1 column=empname:name, timestamp=2026-04-05T18:05:42.436, value=animesh
+ r1 column=empname:name, timestamp=2026-04-15T07:58:38.570, value=animesh
 1 row(s)
-Took 0.0841 seconds
+Took 0.0701 seconds
 hbase:016:0> 
 hbase:017:0> # READ
 hbase:018:0> get 'emp', 'r1'
 COLUMN  CELL
- empname:name timestamp=2026-04-05T18:05:42.436, value=animesh
+ empname:name timestamp=2026-04-15T07:58:38.570, value=animesh
 1 row(s)
-Took 0.0327 seconds
+Took 0.0462 seconds
 hbase:019:0> 
 hbase:020:0> # UPDATE
 hbase:021:0> put 'emp', 'r1', 'empname:name', 'nimesh'
-Took 0.0157 seconds
+Took 0.0101 seconds
 hbase:022:0> scan 'emp'
 ROW  COLUMN+CELL
- r1 column=empname:name, timestamp=2026-04-05T18:05:42.691, value=nimesh
+ r1 column=empname:name, timestamp=2026-04-15T07:58:38.880, value=nimesh
 1 row(s)
-Took 0.0170 seconds
+Took 0.0168 seconds
 hbase:023:0> 
 hbase:024:0> # DELETE
 hbase:025:0> deleteall 'emp', 'r1'
-Took 0.0193 seconds
+Took 0.0357 seconds
 hbase:026:0> scan 'emp'
 ROW  COLUMN+CELL
 0 row(s)
-Took 0.0194 seconds
+Took 0.0182 seconds
 hbase:027:0> 
 hbase:028:0> # OPTIONAL CLEANUP
 hbase:029:0> disable 'emp'
-Took 0.7536 seconds
+Took 0.4220 seconds
 hbase:030:0> drop 'emp'
-Took 0.4591 seconds
+Took 0.3868 seconds
 hbase:031:0> list
 TABLE
 0 row(s)
-Took 0.0129 seconds
+Took 0.0139 seconds
 => []
 hbase:032:0> 
 hbase:033:0> exit

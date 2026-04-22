@@ -6,7 +6,12 @@ Completion requirements context:
 - Dataset: Kaggle real-world dataset (same as Exp5)
 
 Project path:
-cd /mnt/c/Users/vinay/OneDrive/Desktop/ubuntu/Exp6_Hadoop
+If you are starting from Windows CMD/PowerShell, enter Ubuntu first:
+wsl
+
+Then run Linux commands below.
+
+cd /mnt/c/Users/vinay/OneDrive/Desktop/ubuntu/hadoop/Exp6_Hadoop
 
 1) Verify Hadoop in terminal
 source ~/.bashrc

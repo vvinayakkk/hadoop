@@ -4,6 +4,11 @@ Aim:
 Use Apache Spark and implement WordCount using PySpark.
 
 Project path:
+If you are starting from Windows CMD/PowerShell, enter Ubuntu first:
+wsl
+
+Then run Linux commands below.
+
 cd /mnt/c/Users/vinay/OneDrive/Desktop/ubuntu/hadoop/Exp9_PySpark
 
 1) Run full experiment (installs PySpark if missing)

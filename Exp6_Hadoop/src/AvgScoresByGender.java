@@ -14,7 +14,7 @@ public class AvgScoresByGender {
 
     public static class Map extends Mapper<LongWritable, Text, Text, ScoreStatsWritable> {
         private final Text outKey = new Text();
-
+            
         @Override
         public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
             String[] cols = CsvUtils.parseCsv(value.toString());

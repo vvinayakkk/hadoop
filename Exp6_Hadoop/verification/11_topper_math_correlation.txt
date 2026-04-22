@@ -1,0 +1,1 @@
+topper_math_correlation	topper_threshold_total=250, pearson_r=0.561059, toppers=139, non_toppers=861, avg_math_toppers=87.252, avg_math_non_toppers=62.672

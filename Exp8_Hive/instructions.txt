@@ -4,6 +4,11 @@ Aim:
 Install and configure Apache Hive and implement HiveQL queries.
 
 Project path:
+If you are starting from Windows CMD/PowerShell, enter Ubuntu first:
+wsl
+
+Then run Linux commands below.
+
 cd /mnt/c/Users/vinay/OneDrive/Desktop/ubuntu/hadoop/Exp8_Hive
 
 1) Run full experiment (install if missing, execute queries, save proof)

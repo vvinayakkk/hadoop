@@ -7,7 +7,12 @@ Text column used: parental level of education (column 3)
 Integer column used: math score (column 6)
 
 1) Open terminal and move to project
-cd /mnt/c/Users/vinay/OneDrive/Desktop/ubuntu/Exp5_Hadoop
+If you are starting from Windows CMD/PowerShell, enter Ubuntu first:
+wsl
+
+Then run Linux commands below.
+
+cd /mnt/c/Users/vinay/OneDrive/Desktop/ubuntu/hadoop/Exp5_Hadoop
 
 2) Load shell config and verify Hadoop
 source ~/.bashrc

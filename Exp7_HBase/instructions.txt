@@ -4,6 +4,11 @@ Aim:
 Use Apache HBase and implement CRUD operations.
 
 Project path:
+If you are starting from Windows CMD/PowerShell, enter Ubuntu first:
+wsl
+
+Then run Linux commands below.
+
 cd /mnt/c/Users/vinay/OneDrive/Desktop/ubuntu/hadoop/Exp7_HBase
 
 1) Verify HBase installation
